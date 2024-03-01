@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+  {% if "user_name" in session  %}
+    {% for post in posts %}
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <span class="mr-2">Author: {{ post.author }}</span>
+            <small class="text-muted">Posted on: {{ post.date }}</small>
+            <a class="ml-3 btn btn-success" href="{{ url_for('edit_post', index=loop.index0) }}" role="button">Edit</a>
+            <a class="ml-2 btn btn-danger" href="{{ url_for('delete_post', index=loop.index0) }}" role="button">Delete</a>
+          </div>
+          <h2 class="mt-0"><a class="article-title" href="#">{{ post.title }}</a></h2>
+          <p class="article-content">{{ post.content }}</p>
+          <div class="article-metadata mt-3">
+            <h3>LSTM MODEL</h3>
+            <p class="article-content">Prediction: {{ post.prediction }}</p>
+            <p class="article-content">Score: {{ post.prediction_score }}</p>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  {% endif %}
+{% endblock content %}
+

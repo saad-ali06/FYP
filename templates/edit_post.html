@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Update Post Form -->
+<form action="{{url_for('edit_post',index=index)}}" method="post">
+    <label for="new_title">New Title:</label>
+    <input type="text" id="new_title" name="new_title">
+
+    <label for="new_content">New Content:</label>
+    <textarea id="new_content" name="new_content"></textarea>
+
+    <button type="submit">Update Post</button>
+</form>
+
+{% endblock %}
